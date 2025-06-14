@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About Developer - Adyan</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1d2b64, #f8cdda);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 4px #000;
+    }
+
+    button {
+      padding: 12px 28px;
+      font-size: 16px;
+      background-color: #00c3ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #007ea7;
+    }
+
+    #card {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 12px;
+      margin-top: 30px;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      display: none;
+      text-align: left;
+      backdrop-filter: blur(6px);
+      border-left: 5px solid #00c3ff;
+    }
+
+    .line {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      margin: 15px 0;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #00eaff;
+    }
+
+    .value {
+      margin-left: 10px;
+      display: inline-block;
+    }
+
+    .note {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #ddd;
+      max-width: 80%;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>About the Developer</h2>
+  <button onclick="showInfo()">Click to View Info</button>
+
+  <div id="card">
+    <div><span class="label">Name:</span><span class="value" id="devName"></span></div>
+    <div class="line"></div>
+    <div><span class="label">Role:</span><span class="value" id="devRole"></span></div>
+    <div class="line"></div>
+    <div><span class="label">Skills:</span><span class="value" id="devSkills"></span></div>
+    <div class="line"></div>
+    <div><span class="label">Passion:</span><span class="value" id="devPassion"></span></div>
+  </div>
+
+  <p class="note">
+    Note: I took help from ChatGPT to design the CSS part and added some styles myself. The rest of the JavaScript code was written by me with the help of my elder brother (he is a full-stack developer).
+  </p>
+
+  <script>
+    async function getDeveloperData() {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve({
+            name: "Adyan",
+            role: "JavaScript Developer",
+            skills: "HTML, CSS, JavaScript, Web Design",
+            passion: "Creating fun and smart web apps"
+          });
+        }, 1000);
+      });
+    }
+
+    async function showInfo() {
+      const data = await getDeveloperData();
+
+      document.getElementById("devName").innerText = data.name;
+      document.getElementById("devRole").innerText = data.role;
+      document.getElementById("devSkills").innerText = data.skills;
+      document.getElementById("devPassion").innerText = data.passion;
+
+      document.getElementById("card").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
