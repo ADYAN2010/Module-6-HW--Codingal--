@@ -1,1 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Friendly Login 💬</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      animation: fadeBg 4s ease-in-out infinite alternate;
+    }
 
+    @keyframes fadeBg {
+      0% { background-position: left; }
+      100% { background-position: right; }
+    }
+
+    .login-box {
+      background: white;
+      padding: 35px 45px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      text-align: center;
+      max-width: 340px;
+      animation: slideIn 1.2s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .login-box h2 {
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #7a6ee6;
+      box-shadow: 0 0 5px #bfb6ff;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #7a6ee6;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: #675ae0;
+    }
+
+    .message {
+      margin-top: 12px;
+      color: red;
+      font-weight: bold;
+      min-height: 24px;
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Hey there 👋</h2>
+    <p style="font-size:14px;color:#666">Let's get to know you!</p>
+    <input type="text" id="name" placeholder="Enter your name">
+    <input type="number" id="age" placeholder="Enter your age">
+    <button onclick="validate()">Continue</button>
+    <div class="message" id="message"></div>
+  </div>
+
+  <script>
+    function validate() {
+      const name = document.getElementById('name').value.trim();
+      const age = parseInt(document.getElementById('age').value);
+      const message = document.getElementById('message');
+
+      if (name.length < 2) {
+        message.style.color = "red";
+        message.textContent = "Hmm... what's your real name?";
+        return;
+      }
+
+      if (isNaN(age)) {
+        message.style.color = "red";
+        message.textContent = "Age can’t be empty!";
+        return;
+      }
+
+      if (age < 18) {
+        message.style.color = "orangered";
+        message.textContent = "Oops! You must be 18 or older.";
+        return;
+      }
+
+      message.style.color = "green";
+      message.textContent = `Welcome aboard, ${name}! 🎉`;
+    }
+  </script>
+</body>
+</html>
